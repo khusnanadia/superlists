@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from lists.models import Item, List
-
+#test
 def home_page(request):
     comment = ''
 	if Item.objects.count() == 0:

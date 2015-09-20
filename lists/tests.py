@@ -24,30 +24,34 @@ class HomePageTest(TestCase):
 		request = HttpRequest()
 		response = home_page(request)
 		
-		self.assertEqual(Item.objects.count, 0)
+		self.assertEqual(Item.objects.count(), 0)
 		self.assertIn('yey, waktunya berlibur', response.content.decode())
 		
 		
 	def test_list_less_than_5(self):
-		Item.objects.create(text='komentar pribadi 1')
+		list_komentar = List.objects.create()
+		Item.objects.create(text='komentar pribadi 1', list=list_komentar)
 		request = HttpRequest()
-		response = home_page(request)
+#		response = home_page(request)
+		response = self.client.get('/lists/%d/' % (list_komentar.id,))
 		
-		self.assertTrue(Item.objects.count < 5)
-		self.assertIn('sibuk tapi santai', response.content.decode())
+		self.assertTrue(response, Item.objects.count() < 5)
+		self.assertIn('sibuk tapi santai', response.content.decode())		
 		
-		
+
 	def test_list_greater_equal_than_5(self):
-		Item.objects.create(text='komentar pribadi 1')
-		Item.objects.create(text='komentar pribadi 2')
-		Item.objects.create(text='komentar pribadi 3')
-		Item.objects.create(text='komentar pribadi 4')
-		Item.objects.create(text='komentar pribadi 5')
+		list_komentar = List.objects.create()
+		Item.objects.create(text='komentar pribadi 1', list=list_komentar)
+		Item.objects.create(text='komentar pribadi 2', list=list_komentar)
+		Item.objects.create(text='komentar pribadi 3', list=list_komentar)
+		Item.objects.create(text='komentar pribadi 4', list=list_komentar)
+		Item.objects.create(text='komentar pribadi 5', list=list_komentar)
 		
 		request = HttpRequest()
-		response = home_page(request)
+#		response = home_page(request)
+		response = self.client.get('/lists/%d/' % (list_komentar.id,))
 		
-		self.assertTrue(Item.objects.count >= 5)
+		self.assertTrue(response, Item.objects.count() >= 5)
 		self.assertIn('oh tidak', response.content.decode())
 
 

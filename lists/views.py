@@ -27,5 +27,14 @@ def add_item(request, list_id):
 
 def view_list(request, list_id):
 	list_ = List.objects.get(id=list_id)
-	return render(request, 'list.html', {'list': list_})
+
+	comment = ''
+	if Item.objects.count() == 0:
+		comment = 'yey, waktunya berlibur'
+	elif Item.objects.count() < 5:
+		comment = 'sibuk tapi santai'
+	else:
+		comment = 'oh tidak'
+
+	return render(request, 'list.html', {'list': list_, 'comment' : comment})
 

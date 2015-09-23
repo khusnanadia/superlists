@@ -27,12 +27,16 @@ def add_item(request, list_id):
 
 def view_list(request, list_id):
 	list_ = List.objects.get(id=list_id)
+	itemList = Item.objects.filter(list_id=list_id)
 
 	comment = ''
-	if Item.objects.count() == 0:
+#	if Item.objects.filter(list_id=list_id).count() == 0:
+	if itemList.count() == 0:
 		comment = 'yey, waktunya berlibur'
-	elif Item.objects.count() < 5:
+#	elif Item.objects.filter(list_id=list_id).count() < 5:
+	elif itemList.count() < 5:
 		comment = 'sibuk tapi santai'
+#	elif Item.objects.filter(list_id=list_id).count() >= 5:
 	else:
 		comment = 'oh tidak'
 

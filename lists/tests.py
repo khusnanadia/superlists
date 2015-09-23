@@ -21,9 +21,12 @@ class HomePageTest(TestCase):
 
 		
 	def test_list_null(self):
-		request = HttpRequest()
-		response = home_page(request)
+		list_komentar = List.objects.create()
 		
+		request = HttpRequest()
+		#response = home_page(request)
+		response = self.client.get('/lists/%d/' % list_komentar.id,)
+
 		self.assertEqual(Item.objects.count(), 0)
 		self.assertIn('yey, waktunya berlibur', response.content.decode())
 		
@@ -35,7 +38,8 @@ class HomePageTest(TestCase):
 #		response = home_page(request)
 		response = self.client.get('/lists/%d/' % (list_komentar.id,))
 		
-		self.assertTrue(response, Item.objects.count() < 5)
+#		self.assertTrue(response, Item.objects.count() < 5)
+		self.assertTrue(response, self.assertLess(Item.objects.count(),5))
 		self.assertIn('sibuk tapi santai', response.content.decode())		
 		
 

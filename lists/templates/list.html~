@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
-
 {% block header_text  %}Your To-Do lists{% endblock %}
-
 {% block form_action %}/lists/{{ list.id }}/add_item{% endblock %}
 
 {% block table %}

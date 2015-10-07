@@ -3,12 +3,12 @@ from lists.models import Item, List
 #test
 def home_page(request):
 	comment = ''
-	if Item.objects.count() == 0:
-		comment = 'yey, waktunya berlibur'
-	elif Item.objects.count() < 5:
-		comment = 'sibuk tapi santai'
-	else:
-		comment = 'oh tidak'
+#	if Item.objects.count() == 0:
+	comment = 'yey, waktunya berlibur'
+#	elif Item.objects.count() < 5:
+#		comment = 'sibuk tapi santai'
+#	else:
+#		comment = 'oh tidak'
 
 	return render(request, 'home.html', {'comment':comment})
 

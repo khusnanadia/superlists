@@ -1,3 +1,10 @@
 #id_new_item {
 	margin-top: 2ex;
+	border: 1px solid #e6005b;
+}
+
+#kotakjumbo{
+	background-color: #ffc8b1;
+	color: #e6005b;
+	border: 1px solid #e6005b;
 }

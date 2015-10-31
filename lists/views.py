@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from lists.models import Item, List
 
 def home_page(request):
-	comment = "Yey, waktunya berlibur"
+	comment = "yey, waktunya berlibur"
 	return render(request, 'home.html', {'comment': comment})
 
 def new_list(request):

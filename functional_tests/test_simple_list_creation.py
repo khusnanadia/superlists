@@ -21,7 +21,7 @@ class NewVisitorTest(FunctionalTest):
 			'Enter a to-do item'
 		)
 
-		# She types "Buy peacock feather" into a text box (Edith's hobby
+		# She types "Buy peacock feathers" into a text box (Edith's hobby
 		# is tying fly-fishing lures)
 		inputbox.send_keys('Buy peacock feathers')
 
@@ -34,7 +34,7 @@ class NewVisitorTest(FunctionalTest):
 
 		# There is still a text box inviting her to add another item.
 		# enters "Use peacock feathers to make a fly" (Edith is very
-		# methadical)
+		# methodical)
 		inputbox = self.browser.find_element_by_id('id_new_item')
 		inputbox.send_keys('Use peacock feathers to make a fly')
 		inputbox.send_keys(Keys.ENTER)
@@ -43,7 +43,7 @@ class NewVisitorTest(FunctionalTest):
 		self.check_for_row_in_list_table('2: Use peacock feathers to make a fly')
 		self.check_for_row_in_list_table('1: Buy peacock feathers')
 		
-		# Now a new user, Francis, come along to the site.
+		# Now a new user, Francis, comes along to the site.
 
 		## We use a new browser session to make sure that no information
 		## of Edith's is coming through from cookies etc

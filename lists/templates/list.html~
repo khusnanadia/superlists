@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block header_text  %}Your To-Do lists{% endblock %}
+{% block form_action %}{{% url 'view_list' list.id %}}{% endblock %}
 
-{% block form_action %}/lists/{{ list.id }}/{% endblock %}
 {{ comment }}
 {% block table %}
 	<table id="id_list_table" class="table">
